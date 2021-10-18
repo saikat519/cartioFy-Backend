@@ -48,10 +48,10 @@ router.post('/register', async (req, res) => {
   
     user.save()
       .then((result) => {
-        res.status(201).send({ token: token, tokenExpiration: 5 })
+        return res.status(201).send({ token: token, tokenExpiration: 5 })
       })
       .catch(err => {
-            throw err;
+            return res.status(400).send("Error occured during saving user data")
         })
  
     
@@ -90,16 +90,20 @@ router.post("/login", async(req, res) => {
            user.token = token;
            User.update({ token: token }, { where: { user_id: user.user_id } })
              .then(re => {
-             console.log('token updated',re)
-           }).catch(err=>console.log(err))
+               console.log('token updated', re)
+               return res.status(200).send({ token: token, tokenExpiration: 5 });
+             }).catch(err => {
+               console.log(err);
+               return res.status(400).send("token not updated in db")
+             })
           //console.log('>token>>',token)
           
-          return res.status(200).send({ token: token, tokenExpiration: 5 });
+          
          }
          
      } catch (err) {
-          res.status(400).send("Invalid Credentials");
           console.log(err);
+          return res.status(400).send("Invalid Credentials");
         }
         
      
