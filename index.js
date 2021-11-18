@@ -5,7 +5,7 @@ require('dotenv').config()
 const cookieParser = require("cookie-parser")
 const session = require("express-session")
 
-const PORT = process.env.PORT || 8000
+const PORT = process.env.PORT || 5000
 var cors = require('cors')
 const db= require('./config/database')
  
