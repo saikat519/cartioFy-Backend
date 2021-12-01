@@ -7,17 +7,13 @@ const User = db.define('users',{
         defaultValue: Sequelize.UUIDV1,
         primaryKey: true,
     },
+    email:{
+        type: Sequelize.STRING,
+        allowNull: false,
+    },
     user_name:{
         type: Sequelize.STRING,
         allowNull: false,
-    },
-    password:{
-        type: Sequelize.STRING,
-        allowNull: false,
-    },
-    token:{
-        type: Sequelize.STRING,
-        allowNull: true,
     },
     createdAt: {
         type: Sequelize.DATE,
