@@ -45,7 +45,9 @@ app.get('/', function (req, res) {
 });
 
 const login = require('./routes/LoginRoute');
+const createProduct = require('./routes/CreateProduct');
 app.use('/api',login);
+app.use('/api/product',createProduct);
  
 app.listen(PORT, () => {
     console.log(`server running at ${PORT}`)

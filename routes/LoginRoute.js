@@ -35,6 +35,7 @@ router.post('/register', async (req, res) => {
         return res.status(201).send("user data saved")
       })
       .catch(err => {
+            console.log("the error>>>>",err)
             return res.status(400).send("Error occured during saving user data")
         })
  
